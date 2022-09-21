@@ -1,0 +1,6 @@
+#Keyword para a classe
+BiblioCBS 	KEYWORD1
+
+#keyword para métodos
+Crypto 		KEYOWORD2
+Decrypto 	KEYWORD2
