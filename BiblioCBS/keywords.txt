@@ -2,5 +2,7 @@
 BiblioCBS 	KEYWORD1
 
 #keyword para métodos
-Crypto 		KEYOWORD2
+Str_2_StrHex	KEYWORD2
+StrHex_2_Str	KEYWORD2
+Crypto 		KEYWORD2
 Decrypto 	KEYWORD2
