@@ -1,7 +1,7 @@
 // BiblioCBS.cpp
 #include <BiblioCBS.h>
 
-String BiblioCBS::Crypto(String msg){
+String BiblioCBS::Str_2_StrHex(String msg){
 	
 	String msg_rec = "";
 	int tam = msg.length();
@@ -15,7 +15,7 @@ String BiblioCBS::Crypto(String msg){
 	}
   return msg_rec;
 }
-String BiblioCBS::Decrypto(String msg){
+String BiblioCBS::StrHex_2_Str(String msg){
 	
 	String msg_rec = "";
 	String msgx = msg;
@@ -31,6 +31,46 @@ String BiblioCBS::Decrypto(String msg){
 		msg_rec.concat(String(c));
 		//Serial.println(String(c));
 	}
+	return msg_rec;
+}
+String BiblioCBS::Crypto(String msg){
+	
+	String msg_rec = "";
+	int tam = msg.length();
+	char c;
+	
+	for(int cont=0; cont<tam; cont++){
+		c = msg[cont];				//Get Char
+		
+		c = c+(5+cont);//My Crypto
+		
+		msg_rec.concat(String(c, HEX));	//Char to HEX -> send String
+		//Serial.print(String(c, HEX));
+	}
+	//Serial.println();
+  return msg_rec;
+}
+String BiblioCBS::Decrypto(String msg){
+	
+	String msg_rec = "";
+	String msgx = msg;
+	msgx.toUpperCase();
+	int tam = msg.length();
+	char c;
+	
+	int xs = 0;
+	for(int cont=0; cont<tam; cont+=2){
+		char aux1 = (char)msgx[cont];	//Get StrHex(Decimal)
+		char aux2 = (char)msgx[cont+1]; //Get StrHex(Unit)
+		
+		c = hex2c(aux1, aux2);			//Union Hex to Char
+			
+		c = c - (5+(xs++));				//Reverse Crypto
+		
+		msg_rec.concat(String(c));		//Char Send String
+		//Serial.print(String(c));
+	}
+	//Serial.println();
 	return msg_rec;
 }
 char nibble2c(char c){

@@ -10,6 +10,8 @@ class BiblioCBS{
 	
 	
   public:
+	String Str_2_StrHex(String msg);
+	String StrHex_2_Str(String msg);
     String Crypto(String msg);
     String Decrypto(String msg);
 };
